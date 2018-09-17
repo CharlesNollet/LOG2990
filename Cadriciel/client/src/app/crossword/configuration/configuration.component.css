@@ -1,0 +1,141 @@
+.push_button {
+    position: relative;
+    width:340px;
+    height:140px;
+    text-align:center;
+    line-height:43px;
+    display: inline-block;
+    margin: 30px;
+    text-decoration: none;
+    background: rgb(55, 170, 141);
+    border:1px solid rgb(55, 170, 141);
+    border-radius:5px;
+    box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset,
+        0 -1px 0 rgba(255, 255, 255, .1) inset,
+        0 7px 0 rgb(34, 119, 101),
+        0 4px 2px rgba(0, 0, 0, .5);
+    font-family: 'Londrina Outline', cursive;
+    font-size: 80px;
+    padding-top:50px;
+    margin-left: 240px;
+}
+
+.push_button:active {
+    box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+    top:5px;
+}
+
+.push_button:hover {
+    background: #F66C7B;
+    background:linear-gradient(rgb(90, 196, 169), rgb(39, 129, 107));
+}
+
+#modeSelection {
+    margin: 0 auto;
+    position:absolute;
+    z-index: 2;
+}
+
+#modeButton {
+    background : rgb(53, 83, 74);
+    color: rgb(190, 216, 210);
+}
+
+#input {
+    visibility: visible;
+    position: absolute;
+    top: 200px;
+    left: 610px;
+}
+
+
+#inputJoinGame {
+    visibility: visible;
+    position: absolute;
+    top: 50px;
+    left: 610px;
+}
+
+input {
+    background: rgb(215, 240, 234);
+    margin-bottom: 30px;
+}
+
+#buttongroup {
+    position: absolute;
+    left: 550px;
+    top:150px;
+    visibility: visible;
+}
+
+#buttongroupDifficulty {
+    visibility: visible;
+    position: absolute;
+    left: 480px;
+    top:240px;
+}
+
+button {
+    margin-bottom: 15px;
+    margin-right: 5px;
+    margin-left: 15px;
+    padding: 5px 8px;
+    display: inline-block;
+    background-color: rgba(59, 82, 77, 0.938);
+    color:rgb(174, 211, 208);
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.7s;
+    text-align: center;
+    width:150px;
+    font-size: 14px;
+    border:black;
+    cursor: pointer;
+}
+
+
+button:hover {
+    color: #0b4941;
+    background-color: rgb(186, 209, 207);
+    box-shadow: none;
+}
+
+#selectedOptions {
+    background:rgba(63, 110, 96, 0.425);
+    position: absolute;
+    top: 80px;
+    left: 630px;
+    width: 150px;
+}
+
+#waiter {
+    border: 16px solid #f87721;
+    position: absolute;
+    left: 1000px;
+    top:100px;
+    border-radius: 50%;
+    border-top: 16px solid rgb(35, 172, 206);
+    border-right: 16px solid rgb(70, 190, 70);
+    border-bottom: 16px solid red;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  #waiterText{
+    position: absolute;
+    left: 960px;
+    top:250px;
+    width:250px;
+  }
+
+
+
+  
+
+
+
+
+
+

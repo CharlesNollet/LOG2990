@@ -1,0 +1,297 @@
+#definitions {
+    width: 630px;
+    height: 412px;
+    border: 2px solid rgba(44, 107, 97, 0.233);
+    position: absolute;
+    left: 40px;
+    background: rgba(27, 92, 76, 0.068);
+    padding-left:20px;
+    overflow:auto;
+    margin-top:200px;
+}
+
+h2 {
+    margin-right: 20px;
+    text-align: center;
+}
+
+#textDefinition::first-letter {
+    font-size: 110%;
+    color: rgb(27, 76, 109);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#gameInformations {
+    margin-top: 10px;
+    width: 630px;
+    height: 150px;
+    border: 2px solid rgba(44, 107, 97, 0.233);
+    position: absolute;
+    left: 40px;
+    background: rgba(27, 92, 76, 0.068);
+    padding-left:20px;
+    padding-top:30px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.definitionID {
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    z-index: 1;
+    color:black !important;
+}
+
+.userInputLetter {
+    position: relative;
+    text-align: center;
+    top: 4px;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0);
+    border: rgba(0, 0, 0, 0);
+}
+
+#relative {
+    position: relative;
+}
+
+#title {
+    text-align: center;
+}
+
+.emptyGridBox {
+    text-align: left;    
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+    text-transform: uppercase;
+}
+
+.selectedGridBox {
+    text-align: left;    
+    width: 60px;
+    height: 60px;
+    border: 4px solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+    text-transform: uppercase;
+    outline-offset: -4px;
+}
+
+.foundGridBox {
+    text-align: left;
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+    text-transform: uppercase;
+}
+
+.inputGridBox {
+    text-align: left;    
+    width: 60px;
+    height: 60px;
+    border: 4px solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+    text-transform: uppercase;
+    animation: blinker 0.5s alternate-reverse infinite;
+}
+
+.filledGridBox {
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+#CheatButton {
+    position: absolute;
+    left:82%;
+    top:2%;
+    cursor: pointer;
+    border-radius: 4px;
+    background: rgb(92, 150, 132);
+    border: 1px solid rgba(25, 66, 59, 0.705);
+    color:rgb(3, 17, 14);
+    font-size:16px;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition-duration: 0.7s;
+}
+
+#CheatButton:hover {
+    background: rgb(190, 228, 216);
+    color:rgb(12, 65, 52);
+}
+
+button {
+    padding: 5px 8px;
+    min-width: 100px;
+    background-color: rgb(156, 16, 16);
+    color:rgb(231, 200, 200) !important;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.7s;
+    text-align: center;
+    font-size: 14px;
+    border:black;
+    cursor: pointer;
+}
+
+
+button:hover {
+    color: #420505;
+    background-color: rgb(150, 84, 84);
+    box-shadow: none;
+}
+
+#loader {
+    border: 16px solid rgb(51, 77, 72);
+    border-top: 16px solid rgb(71, 143, 131);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 2s infinite;
+    animation-fill-mode: both;
+    display: inline-block;
+    visibility: visible;
+    position: absolute;
+    margin-left: 1010px ;
+    margin-top:300px;
+    z-index: 1;
+}
+
+.selectedDefinition {
+    display: inline-block;
+    vertical-align:top;
+    border-radius: 10%;
+    max-width: 510px;
+}
+
+.foundDefinition {
+    display: inline-block;
+    vertical-align:top;
+    text-decoration: line-through;
+    max-width: 510px;
+}
+
+.clearDefinition {
+    display: inline-block;
+    vertical-align:top;
+    enable-background: 0%;
+    max-width: 510px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes blinker {
+    from {background-color: grey;}
+    to {background-color:  rgb(255, 255, 255);}
+}
+
+h4{
+    display:inline-block;
+    min-width: 100px;
+}
+
+#grid {
+    margin-top: 10px;
+    width: 604px;
+    min-height: 602px;
+    border: 2px solid rgba(44, 107, 97, 0.233);
+    position: absolute;
+    margin-left: 750px;
+    margin-bottom: 10px;
+}
+
+ .gameEnding {  /* source :  https://codepen.io/teacoin/pen/PEJBxX */
+    color: #d60000;
+	background: #dbd8c5;
+    position: absolute;
+	top: 400px;
+    left: 700px;
+	transform-style: preserve-3d;
+	transform: translate(-50%,-50%) perspective(2000px);
+	box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.712), 20px 0 60px rgba(0, 0, 0, 0.767);
+    transition: 1s;
+    z-index:2;
+}
+
+.gameEnding:hover {
+    transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.829), 0 10px 100px rgba(0, 0, 0, 0.849);
+}
+
+.gameEnding .image {
+    position: relative;
+    transform-origin: left;
+    transition: .7s;
+}
+
+img {
+    height: 400px;
+}
+
+.gameEnding .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: .7s;
+}
+
+.gameEnding:hover .image {
+    transform: rotateY(-135deg);
+}
+
+.gameEnding:hover .back {
+    opacity: 1;
+    transition: .6s;
+    box-shadow: 300px 200px 100px rgba(0, 0, 0, 0.719) inset;
+}
+
+.gameEnding .text {
+    top:0;
+    position: absolute;
+    left:50px;
+    box-sizing: border-box;
+    z-index: -1;
+    margin-top: 70px;
+    font-size: 30px;
+    font-family: "Book Antiqua";
+    font-style: italic;
+    text-align: center;
+}
+
+#disconnection {
+    width: 400px;
+    height: 300px;
+    border: 4px solid orangered;
+    position: absolute;
+    left: 500px;
+    top:200px;
+    background: linear-gradient(rgb(52, 101, 141), rgb(136, 175, 207) );
+    text-align:center;
+    padding-top:90px;
+    z-index: 3;
+}

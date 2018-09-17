@@ -1,0 +1,17 @@
+<h2>Track list</h2>
+<ul class="tracks">
+  <li class="track" *ngFor="let track of tracks; let i = index">
+    <a routerLink="/race/{{track.id}}" (mouseover)="displayTrackPreview(track) " (click)=updateSelectedTrack(track)>
+      <span class="badge">{{i+1}}</span> {{track.name}}
+    </a>
+    <div class="element">Description: {{track.description}}</div>
+    <div class="element">Times Played: {{track.timesPlayed}}</div>
+    <div class="element">Type: {{track.type}}</div>
+    <div class="element">Highscores:
+      <div class="subelement" *ngFor="let time of track.bestTimes; let j = index">
+        {{j+1}} : {{getFormatedTime(time.time)}}
+      </div>
+    </div>
+  </li>
+</ul>
+<div id="preview" #preview></div>

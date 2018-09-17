@@ -1,0 +1,139 @@
+<div *ngIf="!isConfigurationDone()">
+  <app-configuration></app-configuration>
+</div>
+<div *ngIf="isConfigurationDone()">
+  <div (mousedown)="resetInputBox()">
+    <div id="loader" *ngIf="isConfigurationDone() && configuration.grid===undefined"></div>
+
+    <div id="definitions" (mousedown)="resetInputBox()">
+      <a id="CheatButton" (click)="changeMode()"> Cheat mode </a>
+      <h2 id="title">Definitions</h2>
+      <div *ngIf="configuration.grid !== undefined">
+        <h3> Horizontal : </h3>
+        <div *ngFor="let word of configuration.grid.words">
+          <li *ngIf="word.isHorizontal">{{word.definitionID}})
+            <span [ngClass]="{ 
+              selectedDefinition : getState(word)===1,
+              foundDefinition : getState(word)===2,
+              clearDefinition: getState(word)===0}">
+              <div *ngIf="isInCheatMode" [style.background]="getPlayerColorForDefinition(word)" (mouseup)="setSelectedWord(word)">{{getWordValue(word)}}</div>
+              <div id="textDefinition" *ngIf="!isInCheatMode" [style.background]="getPlayerColorForDefinition(word)" (mouseup)="setSelectedWord(word)">{{word.definition}}</div>
+            </span>
+          </li>
+        </div>
+        <h3> Vertical : </h3>
+        <div *ngFor="let word of configuration.grid.words">
+          <li *ngIf="!word.isHorizontal">{{word.definitionID}})
+            <span [ngClass]="{ 
+              selectedDefinition : getState(word)===1,
+              foundDefinition : getState(word)===2,
+              clearDefinition: getState(word)===0}">
+              <div *ngIf="isInCheatMode" [style.background]="getPlayerColorForDefinition(word)" (mouseup)="setSelectedWord(word)">{{getWordValue(word)}}</div>
+              <div id="textDefinition" *ngIf="!isInCheatMode" [style.background]="getPlayerColorForDefinition(word)" (mouseup)="setSelectedWord(word)">{{word.definition}}</div>
+            </span>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isConfigurationDone()">
+    <div id="gameInformations" (mousedown)="resetInputBox()">
+      <h2 [style.background]="this.configuration.currentPlayer.color"> {{configuration.currentPlayer.name}} :
+        <h4> {{configuration.currentPlayer.score}} words found</h4>
+      </h2>
+      <h2 *ngIf="configuration.isTwoPlayerGame" [style.background]="this.configuration.otherPlayer.color">
+        {{configuration.otherPlayer.name}} :
+        <h4> {{configuration.otherPlayer.score}} words found</h4>
+      </h2>
+    </div>
+  </div>
+
+  <div *ngIf="isConfigurationDone()">
+    <div id="grid">
+      <div *ngIf="configuration.grid !== undefined">
+        <div *ngFor="let line of configuration.grid.boxes">
+          <div *ngFor="let gridBox of line" (mouseup)="setSelectedWordOfBox(gridBox)">
+            <div (mousedown)="resetInputBox()" [ngClass]="{
+              filledGridBox : gridBox.isBlack, 
+              selectedGridBox: this.playersSelectedBox(gridBox),
+              inputGridBox: gridBox===getMySelectedGridBox(),
+              emptyGridBox : !gridBox.isBlack
+            }" [style.border-color]="getPlayerBorderColorForBox(gridBox)" [style.background]="getPlayerColorForBox(gridBox)"
+              [style.outline]="getPlayerOutlineColor(gridBox)">
+              <div id="relative">
+                <div *ngIf="gridBox.inputChar != undefined && gridBox.inputChar.value != undefined" class="userInputLetter">{{gridBox.inputChar.value}}</div>
+                <div class="definitionID">{{getGridBoxID(gridBox)}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="!configuration.isTwoPlayerGame && isEndGame()">
+    <div class="gameEnding">
+      <div class="image">
+        <div class="back"></div>
+        <img src="../../assets/congrats-gif-edit.gif">
+      </div>
+      <div class="text">
+        <p>Congratulations!</p>
+        <p>You won</p>
+        <p>Here are your options :</p>
+        <button (click)="restartGame()"> Play again with same configuration</button>
+        <a href="/crossword">
+          <button>Go back to configuation menu</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="configuration.isTwoPlayerGame && isEndGame()">
+    <div *ngIf="configuration.currentPlayer.score >= configuration.otherPlayer.score">
+      <div class="gameEnding">
+        <div class="image">
+          <div class="back"></div>
+          <img src="../../assets/congrats-gif-edit.gif">
+        </div>
+        <div class="text">
+          <p>Congratulations!</p>
+          <p>You won</p>
+          <p>Here are your options :</p>
+          <button (click)="restartGame()"> Play again with same configuration</button>
+          <a href="/crossword">
+            <button>Go back to configuation menu</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="configuration.currentPlayer.score < configuration.otherPlayer.score">
+      <div class="gameEnding">
+        <div class="image">
+          <div class="back"></div>
+          <img src="../../assets/sorry.png">
+        </div>
+        <div class="text">
+          <p>Better luck next time ...</p>
+          <p>You lost the game</p>
+          <p>Here are your options :</p>
+          <button (click)="restartGame()"> Play again with same configuration</button>
+          <a href="/crossword">
+            <button>Go back to configuation menu</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="disconnection" *ngIf="hasOtherPlayerDisconnected">
+    <h2>{{configuration.otherPlayer.name}} has disconnected</h2>
+    <a href="/crossword">
+      <button> Go back to menu</button>
+    </a>
+
+  </div>
+
+
+</div>
